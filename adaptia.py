@@ -7,6 +7,16 @@
 #   conexion.close() 
 
 
+# Lista de los dias de la semana para la configuración del usuario
+dias_semana = [
+    "Lunes",
+    "Martes",
+    "Miercoles",
+    "Jueves",
+    "Viernes",
+    "Sabado",
+    "Domingo"
+]
 
 # Función para registrarse
 def registrarse(): 
@@ -25,20 +35,37 @@ def registrarse():
 
     #Configuración de rutinas
     cantidad_rutinas = int(input("\n¿Cuantas rutinas tienes? (lo que haces que no puedes cambiar)\n> "))
+    if cantidad_rutinas < 0 or not isinstance(cantidad_rutinas, int):
+        cantidad_rutinas = int(input("El valor ingresado no es valido, porfavor ingresa un número mayor a 0\n> "))
 
     for i in range (cantidad_rutinas):
         rutina = input(f"Escribe tu rutina: {i + 1}\n> ")
-        hora_inicio = input(f"Escribe la hora de inicio de la rutina: {rutina}\n> ")
-        hora_final_decision = int(input(f"¿La rutina: {rutina} tiene horario de fin? \n1.-SI\n2.-NO\n> "))
+        dias = int(input(f"¿Tu rutina: {rutina} cambia de horario a lo largo de la semana?\n1.-SI\n2.-NO\n> "))
+
+        if dias == 1:
+            for j in range (7):
+                rutina_inicio_dia = int(input(f"Dime el horario de inicio del dia {dias_semana[j]} (o escribe 30 si ese dia no tienes esta actividad en dia {dias_semana[j]})\n> "))
+                rutina_fin_dia = int(input(f"Dime el horario de finalizacion del dia {dias_semana[j]} (o escribe 30 si ese dia no tienes esta actividad en dia {dias_semana[j]})\n> "))
+
+                if rutina_fin_dia == 30 or rutina_inicio_dia == 30:
+                    print("Sigamos")
+        elif dias == 2:
+            hora_inicio = input(f"Escribe la hora de inicio de la rutina: {rutina}\n> ")
+            hora_final_decision = int(input(f"¿La rutina: {rutina} tiene horario de fin? \n1.-SI\n2.-NO\n> "))
+
+        else:
+            dias = int(input(f"El valor ingresado no es valido\n¿Tu rutina: {rutina} cambia a lo largo de la semana?\n1.-SI\n2.-NO\n> "))
 
         if hora_final_decision == 1 :
             hora_final = input(f"Escribe el horario de finalizacion de la rutina: {rutina}\n> ")
         elif hora_final_decision == 2 :
             print("Sigamos")
         else:
-            print("Opción no valida")
+            hora_final = input(f"El valor ingresado no es valido\nEscribe el horario de finalización de la rutina: {rutina}\n>")
 
         rutina = ""
+        rutina_inicio_dia = ""
+        rutina_fin_dia = ""
         hora_inicio = ""
         hora_final_decision = ""
         hora_final = ""
