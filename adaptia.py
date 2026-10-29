@@ -52,16 +52,14 @@ def registrarse():
         elif dias == 2:
             hora_inicio = input(f"Escribe la hora de inicio de la rutina: {rutina}\n> ")
             hora_final_decision = int(input(f"¿La rutina: {rutina} tiene horario de fin? \n1.-SI\n2.-NO\n> "))
-
+            if hora_final_decision == 1 :
+                hora_final = input(f"Escribe el horario de finalizacion de la rutina: {rutina}\n> ")
+            elif hora_final_decision == 2 :
+                print("Sigamos")
+            else:
+                hora_final = input(f"El valor ingresado no es valido\nEscribe el horario de finalización de la rutina: {rutina}\n>")
         else:
             dias = int(input(f"El valor ingresado no es valido\n¿Tu rutina: {rutina} cambia a lo largo de la semana?\n1.-SI\n2.-NO\n> "))
-
-        if hora_final_decision == 1 :
-            hora_final = input(f"Escribe el horario de finalizacion de la rutina: {rutina}\n> ")
-        elif hora_final_decision == 2 :
-            print("Sigamos")
-        else:
-            hora_final = input(f"El valor ingresado no es valido\nEscribe el horario de finalización de la rutina: {rutina}\n>")
 
         rutina = ""
         rutina_inicio_dia = ""
@@ -79,6 +77,19 @@ def registrarse():
         importancia = int(input(f"Del 1 al 10 que tan importante es el hábito: {habito}\n> "))
         habito_inicio = input(f"Escribe la hora de inicio de tu hábito: {habito}\n> ")
         habito_final_decision = int(input(f"¿Tu habito: {habito} tiene hora de fin?\n1.-SI\n2.-NO\n> "))
+        horario = int(input(f"¿Te gustaria que tu hábito: {habito} cambie de hora a lo largo de la semana?\n1.-SI\n2.-NO\n> "))
+
+        if horario == 1:
+            for j in range (7):
+                            habito_inicio_dia = int(input(f"Dime el horario de inicio del dia {dias_semana[j]} (o escribe 30 si ese dia no tienes esta actividad en dia {dias_semana[j]})\n> "))
+                            rutina_fin_dia = int(input(f"Dime el horario de finalizacion del dia {dias_semana[j]} (o escribe 30 si ese dia no tienes esta actividad en dia {dias_semana[j]})\n> "))
+            
+                            if rutina_fin_dia == 30 or rutina_inicio_dia == 30:
+                                print("Sigamos")
+        elif horario == 2:
+            print("Continuemos")
+        else:
+            horario = int(input(f"Opcion no valida, porfavor ingrese un numero valido\n> "))
 
         if habito_final_decision == 1:
             habito_final = input(f"Escribe la hora de fin de tu hábito: {habito}\n> ")
@@ -87,11 +98,17 @@ def registrarse():
         else:
             print("Opción no valida")
 
+        habito_inicio_dia = ""
+        rutina_fin_dia = ""
+        horario = ""
         habito = ""
         importancia = ""
         habito_inicio = ""
         habito_final_decision = ""
         habito_final = ""
+
+    print("\n\nBienvenid@ a AdaptIA, la aplicacion que te ayuda a tener una rutina que se adapte a ti, no tu a ella\n\n")
+
      
 
 
