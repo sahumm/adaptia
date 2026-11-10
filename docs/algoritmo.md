@@ -30,10 +30,10 @@ Para cada hábito de un usuario, el algoritmo:
 ## 2. Definiciones
 
 | Concepto | Definición |
-+---|---|
+|---|---|
 | **Rutina fija** | Bloque no negociable (escuela, trabajo). El algoritmo nunca lo modifica. |
 | **Hábito** | Actividad negociable con días, duración e importancia (1-10). |
-| **Horario**  | Hora central con un margen (± minutos). Un hábito puede tener varios. |
+| **Horario** | Hora central con un margen (± minutos). Un hábito puede tener varios. |
 | **Estado de un horario** | `declarado` (indicado por el usuario), `bueno`, `malo` o `en prueba` (propuesto por el algoritmo). |
 | **Margen** | Tamaño de la ventana. Inicia en 30 min y desciende hasta un mínimo de 10 min. |
 | **Acierto** | El hábito se realizó dentro de la ventana recomendada. |
@@ -56,14 +56,14 @@ El primer horario de cada hábito es el declarado por el usuario: estado `declar
 
 ## 4. Reglas de evaluación de un registro
 
-| # |¿Cumplió?|¿Dentro de la ventana?| Emoción |Acción del algoritmo |
-|---+----+---+---+----|
+| # | ¿Cumplió? | ¿Dentro de la ventana? | Emoción | Acción del algoritmo |
+|---|---|---|---|---|
 | A | No | — | — | Registra "no hecho" y señala a la aplicación que genere un recordatorio. No modifica márgenes ni horarios. |
 | B | Sí | Sí | Positiva | Acierto (+1). El margen disminuye 5 min (mínimo 10). Se mantiene la recomendación. |
-| C | Sí | Sí | Neutral  | Acierto (+1). El margen no cambia. Se mantiene la recomendación. |
+| C | Sí | Sí | Neutral | Acierto (+1). El margen no cambia. Se mantiene la recomendación. |
 | D | Sí | Sí | Negativa | Acierto (+1). El margen no disminuye y el horario queda "en duda". Con 2 registros negativos consecutivos, el horario pasa a `malo` y se propone otro (sección 5). |
 | E | Sí | No | Positiva | Fallo de predicción (-1). La hora real se guarda como horario `bueno` con margen de 30 min y se recomienda. |
-| F | Sí | No | Neutral  | Fallo de predicción (-1). La hora se guarda como dato, sin clasificarla. Se mantiene la recomendación actual. |
+| F | Sí | No | Neutral | Fallo de predicción (-1). La hora se guarda como dato, sin clasificarla. Se mantiene la recomendación actual. |
 | G | Sí | No | Negativa | Fallo de predicción (-1). La hora real se marca `mala`. Se muestra el mensaje "probar otro horario" y se propone uno (sección 5). |
 
 Consideraciones:
@@ -118,11 +118,11 @@ Para promedios y frecuencias se consideran únicamente los **últimos 14 registr
 
 ## 9. Parámetros de diseño
 
-| Parámetro|Valor|
+| Parámetro | Valor |
 |---|---|
 | Emoción positiva / neutral / negativa | 4-5 / 3 / 1-2 |
 | Margen inicial / mínimo / reducción por acierto | 30 min / 10 min / 5 min |
-| Registros considerados en el cálculom | Últimos 14 por hábito |
+| Registros considerados en el cálculo | Últimos 14 por hábito |
 | Registros negativos consecutivos para marcar un horario como `malo` | 2 |
 | Propuesta de horarios nuevos (sección 5, pasos 2 y 3) | Se habilita tras 7 registros del hábito; antes, solo se usa el horario declarado y los horarios `buenos` ya guardados |
 | Granularidad del aprendizaje | Por hábito (el mismo horario aplica a todos los días configurados) |
@@ -132,7 +132,7 @@ Para promedios y frecuencias se consideran únicamente los **últimos 14 registr
 
 ## 10. Plan de versiones
 
-| Versión| Alcance |
+| Versión | Alcance |
 |---|---|
 | **V0** | Un solo hábito: lectura de registros y cálculo de hora central y margen. |
 | **V1** | Emociones y los 7 casos de la matriz de evaluación. |

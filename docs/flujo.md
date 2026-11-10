@@ -83,7 +83,7 @@ Si no hay pendientes, se muestra únicamente la sección "Hoy".
 
 ### 5.3 Acciones sobre un pendiente
 
-|Acción |Resultado |
+| Acción | Resultado |
 |---|---|
 | **Ya lo hice** | Se solicitan hora real y emoción, se registra y se envía al algoritmo. El recordatorio sale del muro. |
 | **Posponer**   | Permanece en el muro y reaparece en el siguiente inicio de sesión. |
@@ -136,8 +136,8 @@ Cierra la sesión.
 
 ## 7. Parámetros de diseño
 
-|Parámetro |Valor |
-|---|
+| Parámetro | Valor |
+|---|---|
 | Archivo automático de recordatorios | 7 días |
 | Escala de importancia | 1 a 10 |
 
