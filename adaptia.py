@@ -27,10 +27,6 @@ Convenciones del esquema:
     - horarios_habito.estado: 'declarado', 'bueno', 'malo' o 'en_prueba'.
     - recordatorios.estado: 'pendiente', 'pospuesto', 'hecho', 'descartado' o 'archivado'.
     - La contraseña se guarda como hash PBKDF2 ("sal$hash"), nunca en texto plano.
-
-Pendiente del algoritmo (algoritmo.md, V1): el ajuste automático de márgenes y la clasificación de
-horarios según los casos A-G de la sección 4. Hoy solo se evalúa el acierto y se resuelve un horario
-'en_prueba' (bueno / malo) y, con emoción negativa, se propone otra hora.
 """
 
 import hashlib
